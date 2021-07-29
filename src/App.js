@@ -1,18 +1,11 @@
-/* eslint-disable react/no-unescaped-entities */
-/* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
-  useLocation,
-  useParams
-} from "react-router-dom";
+  Link} from "react-router-dom";
 
 
-import PropTypes from 'prop-types';
-import ReactDOM from 'react-dom';
 import { Layout, Menu } from 'antd';
 import 'antd/dist/antd.css';
 
@@ -51,17 +44,17 @@ function App() {
 
 function Home() {
 
-  return (<>I'm Home</>);
+  return (<>Im Home</>);
 }
 
 function Search() {
 
-  return (<>I'm Search</>);
+  return (<>Im Search</>);
 }
 
 function Education() {
 
-  return (<>I'm Education</>);
+  return (<>Im Education</>);
 }
 
 
