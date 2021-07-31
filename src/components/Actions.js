@@ -34,4 +34,20 @@ function getRegions() {
     });
 }
 
-export { getUserCountryCodeFromIp, getRegions, getLatestDataSummary };
+function getCountryNames() {
+  const countryNames = [];
+  const url = 'https://api.quarantine.country/api/v1/regions';
+  return fetch(url)
+    .then((res) => res.json())
+    .then((res2) => res2.data.forEach((element) => {
+      countryNames[element.name] = element.key;
+    }))
+    .then(() => {
+      countryNames.Palestine = 'palestine';
+      return countryNames;
+    });
+}
+
+export {
+  getUserCountryCodeFromIp, getRegions, getLatestDataSummary, getCountryNames,
+};
