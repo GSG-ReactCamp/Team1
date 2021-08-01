@@ -26,6 +26,7 @@ function App() {
               <Route path="/" exact component={Home} />
               <Route path="/search" component={Search} />
               <Route path="/education" component={Education} />
+              <Route path="*" component={Home} />
             </Switch>
           </div>
         </Content>

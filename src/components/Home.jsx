@@ -32,7 +32,7 @@ export default function Home() {
     return () => {};
   }, []);
 
-  return userDataSummary && (
+  return (userDataSummary && (
     <div style={{ textAlign: 'center' }}>
       <h1>
         People of
@@ -69,5 +69,5 @@ export default function Home() {
       </Row>
 
     </div>
-  );
+  )) || (<h1>Loading</h1>);
 }
