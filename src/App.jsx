@@ -23,9 +23,9 @@ function App() {
         <Content style={{ padding: '50px 50px' }}>
           <div className="site-layout-content">
             <Switch>
-              <Route path="/" exact component={Home} />
-              <Route path="/search" component={Search} />
-              <Route path="/education" component={Education} />
+              <Route path="/Team1/" exact component={Home} />
+              <Route path="/Team1/search" component={Search} />
+              <Route path="/Team1/education" component={Education} />
               <Route path="*" component={Home} />
             </Switch>
           </div>
