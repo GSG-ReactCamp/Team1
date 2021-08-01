@@ -3,52 +3,24 @@ import React, { useState, useEffect } from 'react';
 import {
   Statistic, Row, Col, Progress, notification,
 } from 'antd';
+import { getRegions, getUserCountryCodeFromIp, getLatestDataSummary } from './Actions';
 
 export default function Home() {
   const [userDataSummary, setUserDataSummary] = useState(null);
-
   useEffect(() => {
-    let userCountryCode = 'CHN';
-    const countrycodes = []; // object countrycode:api key
+    let countrycodes = []; // object countrycode:api key
     let latestDataSummary = [];
+    let userCountryCode = 'CHN';
 
-    function getUserCountryCodeFromIp() {
-      const url = 'https://get.geojs.io/v1/ip/country.json';
-      return fetch(url)
-        .then((res) => res.json())
-        .then((data) => {
-          userCountryCode = data.country;
-          return userCountryCode;
-        });
-    }
-    function getLatestDataSummary() {
-      const url = 'https://api.quarantine.country/api/v1/summary/latest';
-      return fetch(url)
-        .then((res) => res.json())
-        .then((res2) => {
-          latestDataSummary = res2.data;
-          return latestDataSummary;
-        });
-    }
-
-    function getRegions() {
-      const url = 'https://api.quarantine.country/api/v1/regions';
-      fetch(url)
-        .then((res) => res.json())
-        .then((res2) => res2.data.forEach((element) => {
-          countrycodes[element.iso3166a2] = element.key;
-        }))
-        .then(() => {
-          countrycodes.PS = 'palestine';
-        });
-    }
     function getUserDataSummary() {
       setUserDataSummary(latestDataSummary.regions[countrycodes[userCountryCode]]);
     }
 
-    getRegions();
+    getRegions()
+      .then((res) => { countrycodes = res; });
     getUserCountryCodeFromIp()
-      .then(getLatestDataSummary)
+      .then((res) => { userCountryCode = res; return getLatestDataSummary(); })
+      .then((res2) => { latestDataSummary = res2; })
       .then(getUserDataSummary)
       .catch(() => {
         notification.open({

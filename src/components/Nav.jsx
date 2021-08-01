@@ -14,13 +14,13 @@ export default function Nav() {
       mode="horizontal "
       style={{ margin: '0 auto', textAlign: 'center', width: 'fit-content' }}
     >
-      <Menu.Item>
+      <Menu.Item key="home">
         <Link to="/">Home</Link>
       </Menu.Item>
-      <Menu.Item>
+      <Menu.Item key="search">
         <Link to="/search">Search</Link>
       </Menu.Item>
-      <Menu.Item>
+      <Menu.Item key="education">
         <Link to="/education">Education</Link>
       </Menu.Item>
     </Menu>
